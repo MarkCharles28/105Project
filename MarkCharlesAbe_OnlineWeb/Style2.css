@@ -1,61 +1,168 @@
-body {
-    background-image: url("Login.jpg");
-    font-family: italic;
-    background-color: #585050;
-    margin: 0;
-    padding: 0;
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #4a6fa5;
+  --accent-color: #3498db;
+  --text-color: #333;
+  --light-color: #ecf0f1;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-  
-  header {
-    
-    color: #070bf1;
-    padding: 20px;
-    text-align: center;
-    font-style: italic bold;
-    
-  }
-  
-  .container {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #3716ad;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 6px;
-    border-radius: 3px;
-    border: 1px solid #e93838;
-    margin-bottom: 15px;
-  }
-  
-  button[type="submit"] {
-    background-color: #0f991b;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .footer {
-    color: #1f0303;
-    padding: 10px;
-    text-align: center;
-  }
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url("Login.jpg") center/cover no-repeat fixed;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-color);
+}
 
-  h2{
-    text-align: center;
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header h1 span {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transform: translateY(0);
+  transition: var(--transition);
+  margin: 2rem auto;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: #f9f9f9;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  background-color: white;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.footer {
+  color: var(--light-color);
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+    margin: 1rem;
+    width: auto;
   }
   
+  header h1 {
+    font-size: 2rem;
+  }
+}
